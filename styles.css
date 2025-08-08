@@ -1766,145 +1766,554 @@ body {
 }
 
 /* Responsive Amélioré */
-@media (max-width: 1024px) {
-    :root {
-        --padding-x: 2rem;
-        --padding-y: 4rem;
-    }
-    
-    /* Désactiver curseur custom sur mobile */
-    .cursor,
-    .cursor-follower,
-    .cursor-text {
-        display: none;
-    }
-    
+/* ========================================
+   RESPONSIVE DESIGN - VERSION CORRIGÉE
+   ======================================== */
+
+/* Remplace la section responsive existante par cette version corrigée */
+
+/* Tablet et Desktop (1024px+) - Garde tout intact */
+@media (min-width: 1025px) {
+    /* Force curseur custom sur desktop uniquement */
     body {
-        cursor: auto;
+        cursor: none;
     }
     
-    * {
-        cursor: auto !important;
-    }
-    
-    .hero-title {
-        font-size: clamp(2.5rem, 10vw, 6rem);
-    }
-    
-    .video-grid {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    }
-    
-    .about-content {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-    }
-    
-    .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-    }
-    
-    /* Nav dots cachés sur tablette */
-    .nav-dots {
-        display: none;
+    button, a, .video-card, .menu-toggle, .nav-dot, .filter-tab {
+        cursor: none;
     }
 }
 
-@media (max-width: 768px) {
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) and (min-width: 769px) {
     :root {
-        --padding-x: 1.5rem;
-        --nav-height: 60px;
+        --padding-x: 2.5rem;
+        --padding-y: 4rem;
     }
     
-    /* Hero mobile */
-    .hero-content {
-        padding: 0 1.5rem;
-    }
+    /* Désactiver curseur custom */
+    .cursor, .cursor-follower, .cursor-text { display: none; }
+    body, * { cursor: auto !important; }
     
-    .hero-title {
-        font-size: clamp(2rem, 12vw, 4rem);
-        margin-bottom: 1.5rem;
-    }
+    /* Hero ajusté */
+    .hero-title { font-size: clamp(3rem, 8vw, 8rem); }
+    .hero-subtitle { font-size: 1rem; }
     
-    .hero-subtitle {
-        font-size: 0.8rem;
-    }
+    /* Navigation dots simplifiés */
+    .nav-dots { gap: 1.5rem; }
+    .nav-dot { transform: scale(0.9); }
     
-    .magnetic-btn {
-        padding: 1.2rem 2.5rem;
-        font-size: 0.85rem;
-    }
-    
-    /* Works mobile */
-    .works {
-        padding: 3rem 0;
-    }
-    
-    .section-title {
-        font-size: clamp(1.8rem, 8vw, 3rem);
-        margin-bottom: 1.5rem;
-    }
-    
-    .filter-tabs {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        padding-bottom: 1rem;
-    }
-    
-    .filter-tabs::-webkit-scrollbar {
-        display: none;
-    }
-    
-    .video-grid {
-        grid-template-columns: 1fr;
+    /* Video grid 2 colonnes */
+    .video-grid { 
+        grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
     }
     
-    /* About mobile */
-    .stats-grid {
+    /* About en colonne */
+    .about-content { 
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 3rem;
+        text-align: center;
     }
     
-    .service-tags {
+    /* Contact ajusté */
+    .contact-grid { 
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+}
+
+/* Mobile (768px et moins) */
+@media (max-width: 768px) {
+    :root {
+        --padding-x: 1rem;
+        --padding-y: 2rem;
+        --nav-height: 70px;
+    }
+    
+    /* Désactiver curseur custom */
+    .cursor, .cursor-follower, .cursor-text { display: none !important; }
+    body, *, button, a { cursor: auto !important; }
+    
+    /* Navigation mobile */
+    .nav {
+        padding: 0 1rem;
+        height: 70px;
+    }
+    
+    .nav-dots { display: none; }
+    
+    .logo-text { font-size: 1.2rem; }
+    
+    /* Menu burger plus grand */
+    .menu-toggle {
+        width: 35px;
+        height: 25px;
+        z-index: 1002;
+    }
+    
+    /* Menu overlay mobile */
+    .menu-link {
+        font-size: clamp(1.8rem, 8vw, 3rem);
+        margin: 0.5rem 0;
+    }
+    
+    .social-links {
+        gap: 2rem;
+        flex-wrap: wrap;
         justify-content: center;
     }
     
-    .floating-element {
-        display: none;
+    /* HERO MOBILE - Fixé */
+    .section.hero {
+        height: 100vh;
+        min-height: 600px;
+        padding: 0;
     }
     
-    /* Contact mobile */
-    .contact-form {
-        gap: 1.5rem;
+    .hero-content {
+        padding: 0 1rem;
+        width: 100%;
+        max-width: 100%;
+        justify-content: center;
+        text-align: center;
     }
     
-    .social-links-grid {
-        grid-template-columns: 1fr;
+    .hero-title {
+        font-size: clamp(2.2rem, 12vw, 4rem);
+        line-height: 0.85;
+        margin-bottom: 1rem;
+    }
+    
+    .letter {
+        animation-duration: 0.8s;
+        animation-delay: calc(var(--i) * 0.08s);
+    }
+    
+    .hero-subtitle {
+        font-size: clamp(0.7rem, 3vw, 0.9rem);
+        letter-spacing: 0.2em;
+        line-height: 1.4;
+    }
+    
+    .subtitle-word {
+        display: inline-block;
+        margin: 0 0.5rem;
+    }
+    
+    .subtitle-separator {
+        margin: 0 0.3rem;
+        font-size: 0.8em;
+    }
+    
+    /* CTA mobile */
+    .hero-cta-group {
+        margin-top: 2rem;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .magnetic-btn {
+        padding: 1.2rem 2rem;
+        font-size: 0.9rem;
+        min-width: 200px;
+        max-width: 280px;
     }
     
     /* Sound toggle repositionné */
     .sound-toggle {
-        bottom: 6rem;
-        right: 1rem;
-        transform: scale(0.8);
-    }
-    
-    /* Scroll indicator */
-    .scroll-indicator {
         bottom: 2rem;
+        right: 1rem;
+        transform: scale(0.85);
+        gap: 0.8rem;
     }
     
-    .scroll-text {
+    .sound-label { font-size: 0.65rem; }
+    
+    /* Blueprint mobile - simplifié */
+    .home-blueprint {
+        opacity: 0.3;
+        animation: none;
+        transform: scale(1.1);
+    }
+    
+    .home-blueprint .wall,
+    .home-blueprint .partition,
+    .home-blueprint .door,
+    .home-blueprint .window,
+    .home-blueprint .furniture {
+        animation: none;
+        stroke-dasharray: none;
+        stroke-dashoffset: 0;
+    }
+    
+    /* WORKS MOBILE - Fixé */
+    .works {
+        padding: 3rem 0 2rem;
+        min-height: auto;
+    }
+    
+    .works-container {
+        padding: 0 1rem;
+        width: 100%;
+    }
+    
+    .section-title {
+        font-size: clamp(1.8rem, 10vw, 2.5rem);
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+    
+    .title-accent {
+        font-size: 0.4em;
+        letter-spacing: 0.2em;
+        margin-bottom: 0.3em;
+    }
+    
+    /* Filter tabs mobile avec scroll horizontal */
+    .filter-tabs {
+        display: flex;
+        gap: 1rem;
+        overflow-x: auto;
+        padding: 0 0 1rem;
+        margin: 1.5rem 0 2rem;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        justify-content: flex-start;
+    }
+    
+    .filter-tabs::-webkit-scrollbar { display: none; }
+    
+    .filter-tab {
+        flex-shrink: 0;
+        padding: 0.8rem 1.2rem;
+        font-size: 0.75rem;
+        white-space: nowrap;
+        border-radius: 25px;
+        min-width: fit-content;
+    }
+    
+    /* Video grid mobile - 1 colonne */
+    .video-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        width: 100%;
+    }
+    
+    .video-card {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+    }
+    
+    .card-inner {
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    
+    /* Video preview mobile */
+    .video-preview {
+        aspect-ratio: 16/9;
+        width: 100%;
+        height: auto;
+    }
+    
+    .preview-video,
+    .video-poster {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    /* Video info toujours visible sur mobile */
+    .video-info {
+        position: relative;
+        transform: none;
+        background: var(--secondary);
+        padding: 1.5rem;
+        margin-top: 0;
+    }
+    
+    .hover-reveal {
+        opacity: 1;
+        transform: none;
+    }
+    
+    .video-title {
+        font-size: 1.3rem;
+        margin: 0.8rem 0;
+    }
+    
+    .video-description {
+        font-size: 0.9rem;
+        margin: 1rem 0;
+        line-height: 1.5;
+    }
+    
+    .watch-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 1rem;
+        font-size: 0.85rem;
+    }
+    
+    /* Load more mobile */
+    .load-more-container {
+        margin-top: 2rem;
+        padding: 0 1rem;
+    }
+    
+    .load-more-btn {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+        display: block;
+        padding: 1.2rem;
+    }
+    
+    /* ABOUT MOBILE - Fixé */
+    .about {
+        padding: 3rem 0;
+    }
+    
+    .about-container {
+        padding: 0 1rem;
+    }
+    
+    .about-content {
+        display: block;
+        text-align: center;
+    }
+    
+    .about-left {
+        margin-bottom: 3rem;
+    }
+    
+    .about-text {
+        margin: 2rem 0;
+        max-width: 100%;
+    }
+    
+    .lead-text {
+        font-size: 1.1rem;
+        line-height: 1.5;
+    }
+    
+    .about-text p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    
+    /* Stats mobile */
+    .stats-grid {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        margin: 2rem 0;
+    }
+    
+    .stat-item {
+        flex: 1;
+        min-width: 80px;
+    }
+    
+    .stat-number {
+        font-size: 2.2rem;
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+    
+    .stat-label {
+        font-size: 0.7rem;
+        line-height: 1.2;
+    }
+    
+    /* Services mobile */
+    .services-list {
+        margin-top: 2rem;
+    }
+    
+    .service-tags {
+        justify-content: center;
+        gap: 0.8rem;
+    }
+    
+    .service-tag {
+        font-size: 0.75rem;
+        padding: 0.6rem 1rem;
+        border-radius: 20px;
+    }
+    
+    /* About image mobile */
+    .about-right {
+        width: 100%;
+    }
+    
+    .about-image-container {
+        max-width: 300px;
+        margin: 0 auto 2rem;
+    }
+    
+    .image-wrapper {
+        width: 100%;
+        aspect-ratio: 4/5;
+        height: auto;
+        border-radius: 15px;
+        overflow: hidden;
+    }
+    
+    .about-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    /* Floating elements cachés sur mobile */
+    .floating-element { display: none; }
+    
+    /* Clients mobile */
+    .clients-section {
+        margin-top: 2rem;
+    }
+    
+    .marquee-content {
+        gap: 2rem;
+        animation-duration: 15s;
+    }
+    
+    .client-name {
+        font-size: 1rem;
+    }
+    
+    /* CONTACT MOBILE - Fixé */
+    .contact {
+        padding: 3rem 0;
+    }
+    
+    .contact-container {
+        padding: 0 1rem;
+    }
+    
+    .contact-header {
+        margin-bottom: 2.5rem;
+        text-align: center;
+    }
+    
+    .contact-subtitle {
+        font-size: 1rem;
+        line-height: 1.5;
+        max-width: 100%;
+    }
+    
+    .contact-grid {
+        display: block;
+    }
+    
+    /* Form mobile */
+    .contact-form-wrapper {
+        margin-bottom: 3rem;
+    }
+    
+    .contact-form {
+        gap: 2rem;
+    }
+    
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        font-size: 16px; /* Empêche le zoom sur iOS */
+        padding: 1.2rem 0 0.8rem;
+    }
+    
+    .form-group label {
+        font-size: 0.85rem;
+        top: 1.2rem;
+    }
+    
+    .form-group input:focus ~ label,
+    .form-group input:valid ~ label,
+    .form-group textarea:focus ~ label,
+    .form-group textarea:valid ~ label,
+    .form-group select:focus ~ label,
+    .form-group select:valid ~ label {
+        top: 0;
         font-size: 0.7rem;
     }
     
+    .submit-btn {
+        width: 100%;
+        max-width: none;
+        padding: 1.2rem;
+        margin-top: 1rem;
+        justify-content: center;
+    }
+    
+    /* Contact info mobile */
+    .contact-info {
+        gap: 2rem;
+    }
+    
+    .info-block {
+        margin-bottom: 2rem;
+    }
+    
+    .info-title {
+        font-size: 0.85rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+    
+    .info-item {
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+    
+    .info-link {
+        font-size: 1rem;
+        display: block;
+        padding: 0.5rem 0;
+    }
+    
+    /* Social links mobile */
+    .social-links-grid {
+        gap: 0.5rem;
+    }
+    
+    .social-link-item {
+        padding: 1.2rem;
+        border-radius: 8px;
+        font-size: 0.9rem;
+    }
+    
+    .social-name {
+        font-size: 0.9rem;
+    }
+    
+    /* Location mobile */
+    .location-visual {
+        justify-content: center;
+        padding: 1.5rem;
+        border-radius: 8px;
+    }
+    
     /* Footer mobile */
+    .footer {
+        margin-top: 3rem;
+        padding-top: 2rem;
+    }
+    
     .footer-content {
         flex-direction: column;
-        gap: 1rem;
         text-align: center;
+        gap: 1rem;
+    }
+    
+    .footer-left p,
+    .footer-time,
+    .footer-location {
+        font-size: 0.75rem;
     }
     
     .footer-right {
@@ -1913,201 +2322,291 @@ body {
     }
 }
 
+/* Mobile très petit (480px et moins) */
 @media (max-width: 480px) {
     :root {
-        --padding-x: 1rem;
+        --padding-x: 0.8rem;
+        --nav-height: 65px;
     }
     
+    /* Navigation plus compacte */
+    .nav {
+        height: 65px;
+        padding: 0 0.8rem;
+    }
+    
+    .logo-text { font-size: 1.1rem; }
+    
+    .menu-toggle {
+        width: 32px;
+        height: 22px;
+    }
+    
+    /* Hero très petit écran */
     .hero-title {
-        font-size: clamp(1.8rem, 15vw, 3rem);
-        letter-spacing: -0.02em;
+        font-size: clamp(1.8rem, 15vw, 3.2rem);
+        line-height: 0.8;
     }
     
-    .letter {
-        animation-delay: calc(var(--i) * 0.03s);
+    .hero-subtitle {
+        font-size: clamp(0.65rem, 4vw, 0.8rem);
+        letter-spacing: 0.15em;
     }
     
     .magnetic-btn {
-        width: 100%;
-        max-width: 280px;
-        padding: 1rem 2rem;
+        padding: 1rem 1.5rem;
+        font-size: 0.8rem;
+        min-width: 180px;
     }
     
+    /* Sections plus compactes */
     .section-title {
-        font-size: 2rem;
+        font-size: clamp(1.5rem, 12vw, 2.2rem);
     }
     
-    .title-accent {
-        font-size: 0.4em;
-    }
-    
-    /* Video cards mobile */
+    /* Video cards plus compactes */
     .video-info {
-        padding: 1.5rem;
-        transform: translateY(30%);
+        padding: 1.2rem;
     }
     
     .video-title {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
     
-    /* Form mobile */
+    .video-description {
+        font-size: 0.85rem;
+    }
+    
+    /* Stats plus compacts */
+    .stat-number {
+        font-size: 1.8rem;
+    }
+    
+    .stat-label {
+        font-size: 0.65rem;
+    }
+    
+    /* Form plus compact */
     .form-group input,
     .form-group textarea,
     .form-group select {
-        font-size: 16px; /* Empêche le zoom sur iOS */
+        padding: 1rem 0 0.6rem;
+    }
+    
+    .form-group label {
+        top: 1rem;
+        font-size: 0.8rem;
+    }
+    
+    /* Sound toggle plus petit */
+    .sound-toggle {
+        transform: scale(0.75);
+        bottom: 1.5rem;
+        right: 0.5rem;
     }
 }
 
-/* Animations responsives */
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
+/* Video Modal Responsive */
+@media (max-width: 768px) {
+    .video-modal {
+        padding: 1rem;
+    }
+    
+    .modal-close {
+        top: 1rem;
+        right: 1rem;
+        width: 35px;
+        height: 35px;
+    }
+    
+    .modal-content {
+        width: 100%;
+        margin-top: 2rem;
+    }
+    
+    .video-controls-custom {
+        padding: 1rem;
+        gap: 1rem;
+    }
+    
+    .play-pause-btn {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .video-time {
+        font-size: 0.7rem;
+    }
+    
+    .video-info-modal {
+        padding: 1rem;
+        text-align: center;
+    }
+    
+    .modal-video-title {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .modal-video-description {
+        font-size: 0.9rem;
+        line-height: 1.4;
     }
 }
 
-/* Fix pour le scroll sur iOS */
+/* Corrections pour Safari et iOS */
 @supports (-webkit-touch-callout: none) {
     .scroll-container {
         -webkit-overflow-scrolling: touch;
+        overflow: visible;
+    }
+    
+    /* Fix pour les input sur iOS */
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        -webkit-appearance: none;
+        border-radius: 0;
+    }
+    
+    /* Fix pour les vidéos sur iOS */
+    .hero-video,
+    .preview-video,
+    .modal-video {
+        -webkit-playsinline: true;
     }
 }
 
-/* Classe helper pour stopper les animations au resize */
-.resize-animation-stopper * {
-    animation: none !important;
-    transition: none !important;
+/* Animation réduite sur mobile pour performance */
+@media (max-width: 768px) {
+    /* Désactiver les animations lourdes */
+    .home-blueprint,
+    .bp-loader,
+    .grain-overlay,
+    .scan-lines {
+        animation: none;
+    }
+    
+    /* Simplifier les transitions */
+    * {
+        transition-duration: 0.2s !important;
+    }
+    
+    /* Garder seulement les animations essentielles */
+    .letter {
+        animation: fadeInUp 0.5s ease forwards;
+        animation-delay: calc(var(--i) * 0.05s);
+    }
+    
+    .subtitle-word {
+        animation: fadeInUp 0.5s ease forwards;
+        animation-delay: calc(0.3s + var(--i) * 0.1s);
+    }
 }
 
-/* ===== BP: Subtle blueprint overlay for HERO only (non-breaking) ===== */
-.hero{ position: relative; } /* safe: doesn't affect layout, anchors abs children */
-.hero::after{content:none !important; display:none !important;}
-@media (max-width: 768px){ .hero::after{content:none !important; display:none !important;} }
-@media (prefers-contrast: more){ .hero::after{content:none !important; display:none !important;} }
+/* Fix pour éviter le défilement horizontal */
+* {
+    box-sizing: border-box;
+}
 
-/* ===== BP: Loader blueprint draw animation ===== */
-.bp-loader{ position:absolute; inset:0; width:100%; height:100%; pointer-events:none; z-index:0; opacity:.55; animation: bp-pan 16s ease-in-out infinite alternate; }
-.loader-content{ position:relative; z-index:1; } /* keep text above svg */
+html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+}
 
-.bp-loader .bp-stroke{ fill:none; stroke:rgba(255,255,255,.20); stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:600; stroke-dashoffset:600; animation: bp-draw .9s cubic-bezier(.16,1,.3,1) forwards, bp-flow 5.5s linear infinite .9s; }
-.bp-loader .bp-stroke:nth-child(1){ animation-delay:.0s;  stroke-dasharray:3400; stroke-dashoffset:3400; }
-.bp-loader .bp-stroke:nth-child(2){ animation-delay:.10s; stroke-dasharray:1000; stroke-dashoffset:1000; }
-.bp-loader .bp-stroke:nth-child(3){ animation-delay:.18s; stroke-dasharray:1200; stroke-dashoffset:1200; }
-.bp-loader .bp-stroke:nth-child(4){ animation-delay:.26s; stroke-dasharray: 900; stroke-dashoffset: 900; }
-.bp-loader .bp-stroke:nth-child(5){ animation-delay:.34s; stroke-dasharray: 400; stroke-dashoffset: 400; }
-.bp-loader .bp-stroke:nth-child(6){ animation-delay:.42s; stroke-dasharray: 600; stroke-dashoffset: 600; }
-.bp-loader .bp-stroke:nth-child(7){ animation-delay:.50s; stroke-dasharray: 900; stroke-dashoffset: 900; }
-.bp-loader .bp-stroke:nth-child(8){ animation-delay:.58s; stroke-dasharray:1100; stroke-dashoffset:1100; }
-.bp-loader .bp-stroke:nth-child(9){ animation-delay:.66s; stroke-dasharray: 330; stroke-dashoffset: 330; }
-.bp-loader .bp-stroke:nth-child(10){animation-delay:.74s; stroke-dasharray: 260; stroke-dashoffset: 260; }
+.scroll-container {
+    max-width: 100vw;
+    overflow-x: hidden;
+}
 
-@keyframes bp-draw { to{ stroke-dashoffset:0; } }
+.section {
+    max-width: 100vw;
+    overflow-x: hidden;
+}
 
-/* HOME: hide video background to reveal blueprint */
-.hero-video-container{ display:none !important; }
+/* Amélioration des sections sur mobile */
+@media (max-width: 768px) {
+    /* Scroll container mobile */
+    .scroll-container {
+        height: auto;
+        overflow-y: visible;
+        scroll-snap-type: none;
+    }
+    
+    .section {
+        scroll-snap-align: none;
+        min-height: auto;
+        padding: 2rem 0;
+    }
+    
+    .section.hero {
+        height: 100vh;
+        min-height: 600px;
+        scroll-snap-align: start;
+    }
+    
+    /* Navigation fixe mobile */
+    .nav {
+        position: fixed;
+        background: rgba(10, 10, 10, 0.95);
+        backdrop-filter: blur(20px);
+        mix-blend-mode: normal;
+    }
+    
+    /* Progress bar toujours visible */
+    .progress-container {
+        display: block;
+        z-index: 999;
+    }
+    
+    /* Classes utilitaires mobile */
+    .mobile-hidden { display: none !important; }
+    .mobile-center { text-align: center !important; }
+    .mobile-full-width { width: 100% !important; }
+    .mobile-no-margin { margin: 0 !important; }
+    .mobile-small-padding { padding: 0.5rem !important; }
+}
 
+/* Corrections spécifiques pour très petits écrans */
+@media (max-width: 360px) {
+    .hero-title {
+        font-size: clamp(1.6rem, 18vw, 2.8rem);
+    }
+    
+    .magnetic-btn {
+        padding: 0.9rem 1.2rem;
+        font-size: 0.75rem;
+        min-width: 160px;
+    }
+    
+    .video-info {
+        padding: 1rem;
+    }
+    
+    .contact-form {
+        gap: 1.5rem;
+    }
+    
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        padding: 0.9rem 0 0.5rem;
+        font-size: 15px;
+    }
+}
 
-/* HOME: Full-SVG blueprint background (futuristic, accessible) */
-.home-blueprint{
-  position:absolute; inset:0;
-  z-index:-1; /* behind hero content */
-  opacity:.55;
-  pointer-events:none;
-  animation: bp-pan 14s ease-in-out infinite alternate;
-}
-.home-blueprint .bp{
-  fill:none;
-  stroke:rgba(255,255,255,.18);
-  stroke-width:1.6;
-  stroke-linecap:round; stroke-linejoin:round;
-  stroke-dasharray: var(--len, 600);
-  stroke-dashoffset: var(--len, 600);
-  animation: bp-home-draw .9s cubic-bezier(.16,1,.3,1) forwards, bp-flow 6s linear infinite .9s;
-  animation-delay: var(--d, 0s), var(--d, 0s);
-}
-.home-blueprint .bp-dot{
-  fill:#00ff88; opacity:.2;
-  animation: bp-pulse 2.8s ease-in-out infinite;
-}
-@keyframes bp-home-draw{ to{ stroke-dashoffset:0; } }
-@keyframes bp-flow{ to{ stroke-dashoffset:-600; } }
-@keyframes bp-pan{ from{ transform: translate3d(-1%,0,0) scale(1.02);} to{ transform: translate3d(1%,0,0) scale(1.02);} }
-@keyframes bp-pulse{ 0%,100%{opacity:.12; r:2;} 50%{opacity:.35; r:2.8;} }
-
-
-
-/* === HOME: Architectural blueprint (pro) === */
-.home-blueprint{
-  position:absolute; inset:0; z-index:-1; pointer-events:none;
-  opacity:.62; animation: bp-pan 14s ease-in-out infinite alternate;
-}
-/* Walls */
-.home-blueprint .wall{
-  fill:none;
-  stroke:rgba(255,255,255,.28);
-  stroke-width:2.4;
-  stroke-linecap:round; stroke-linejoin:round;
-  stroke-dasharray: var(--len, 800); stroke-dashoffset: var(--len, 800);
-  animation: bp-home-draw .7s cubic-bezier(.16,1,.3,1) forwards, bp-flow 6s linear infinite .7s;
-  animation-delay: var(--d, 0s), var(--d, 0s);
-}
-/* Partitions */
-.home-blueprint .partition{
-  stroke:rgba(255,255,255,.20); fill:none; stroke-width:1.4;
-  stroke-dasharray: var(--len, 600); stroke-dashoffset: var(--len, 600);
-  animation: bp-home-draw .75s cubic-bezier(.16,1,.3,1) forwards, bp-flow 7s linear infinite .75s;
-  animation-delay: var(--d, 0s), var(--d, 0s);
-}
-/* Doors */
-.home-blueprint .door{
-  stroke:rgba(255,255,255,.26); fill:none; stroke-width:1.6;
-  stroke-dasharray: var(--len, 240); stroke-dashoffset: var(--len, 240);
-  animation: bp-home-draw .6s cubic-bezier(.16,1,.3,1) forwards;
-  animation-delay: var(--d, 0s);
-}
-/* Windows */
-.home-blueprint .window line{
-  stroke:rgba(255,255,255,.22); stroke-width:1.6;
-}
-.home-blueprint .window{
-  stroke-dasharray: var(--len, 220); stroke-dashoffset: var(--len, 220);
-  animation: bp-home-draw .6s cubic-bezier(.16,1,.3,1) forwards, bp-flow 5.5s linear infinite .6s;
-  animation-delay: var(--d, 0s), var(--d, 0s);
-}
-/* Stairs */
-.home-blueprint .stairs rect, .home-blueprint .stairs line{
-  stroke:rgba(255,255,255,.20); fill:none; stroke-width:1.2;
-}
-.home-blueprint .stairs{
-  stroke-dasharray: var(--len, 600); stroke-dashoffset: var(--len, 600);
-  animation: bp-home-draw .9s cubic-bezier(.16,1,.3,1) forwards;
-  animation-delay: var(--d, 0s);
-}
-/* Dimensions */
-.home-blueprint .dim line{
-  stroke:rgba(255,255,255,.18); stroke-width:1.1;
-}
-.home-blueprint .dim{
-  stroke-dasharray: var(--len, 800); stroke-dashoffset: var(--len, 800);
-  animation: bp-home-draw .85s cubic-bezier(.16,1,.3,1) forwards;
-  animation-delay: var(--d, 0s);
-}
-/* Centerlines (dashed look) */
-.home-blueprint .center{
-  stroke:rgba(255,255,255,.14); stroke-width:1; stroke-dasharray:8 8;
-  stroke-dashoffset: var(--len, 800);
-  animation: bp-home-draw 1s cubic-bezier(.16,1,.3,1) forwards;
-  animation-delay: var(--d, 0s);
-}
-@media (prefers-reduced-motion: reduce){
-  .home-blueprint{ animation:none; }
-  .home-blueprint .wall, .home-blueprint .partition, .home-blueprint .door,
-  .home-blueprint .window, .home-blueprint .stairs, .home-blueprint .dim, .home-blueprint .center{
-    animation:none; stroke-dasharray:none; stroke-dashoffset:0;
-  }
+/* Fix pour les animations sur mobile en mode réduit */
+@media (max-width: 768px) and (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+    
+    .letter,
+    .subtitle-word {
+        opacity: 1;
+        transform: none;
+    }
 }
 
 
@@ -2151,6 +2650,234 @@ body.force-cursor, body.force-cursor * { cursor: auto !important; }
 .project-player, .project-player *,
 video, .video-overlay { cursor: auto !important; }
 
+
+/* ========================================
+   EXTENSION DU BLUEPRINT HERO SUR LA SECTION WORKS
+   ======================================== */
+
+/* Étendre le blueprint du hero pour couvrir aussi la section Works */
+@media (max-width: 1024px) {
+    /* Étendre la hauteur du blueprint du hero */
+    .home-blueprint {
+        height: 200vh !important; /* Double la hauteur pour couvrir hero + works */
+        position: fixed !important; /* Fixé pour rester visible pendant le scroll */
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: -1;
+        opacity: 0.4;
+    }
+    
+    /* Alternative: Dupliquer le blueprint sur la section Works */
+    .works {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .works::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 1440 900' preserveAspectRatio='xMidYMid slice' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cmarker id='dimArrow' markerWidth='8' markerHeight='8' refX='4' refY='4' orient='auto'%3E%3Cpath d='M0,0 L8,4 L0,8 Z' fill='rgba(255,255,255,.22)'/%3E%3C/marker%3E%3Cpattern id='hatch45' width='8' height='8' patternUnits='userSpaceOnUse' patternTransform='rotate(45)'%3E%3Cline x1='0' y1='0' x2='0' y2='8' stroke='rgba(255,255,255,.10)' stroke-width='1'/%3E%3C/pattern%3E%3C/defs%3E%3Cg%3E%3Cpath d='M120 110 H1280 V760 H260 L240 730 H120 Z' fill='none' stroke='rgba(255,255,255,.18)' stroke-width='1.6'/%3E%3Cpath d='M260 730 Q360 620 520 620 H760' fill='none' stroke='rgba(255,255,255,.18)' stroke-width='1.6'/%3E%3Cpath d='M260 620 V260 H560 V460 H420 V620 Z' fill='none' stroke='rgba(255,255,255,.18)' stroke-width='1.6'/%3E%3Crect x='600' y='240' width='300' height='260' rx='2' fill='none' stroke='rgba(255,255,255,.18)' stroke-width='1.6'/%3E%3Cpath d='M930 240 H1240 V520 H930 Z' fill='none' stroke='rgba(255,255,255,.18)' stroke-width='1.6'/%3E%3Crect x='820' y='560' width='300' height='180' rx='2' fill='none' stroke='rgba(255,255,255,.18)' stroke-width='1.6'/%3E%3Cline x1='420' y1='460' x2='560' y2='460' stroke='rgba(255,255,255,.15)' stroke-width='1.4'/%3E%3Cline x1='600' y1='370' x2='900' y2='370' stroke='rgba(255,255,255,.15)' stroke-width='1.4'/%3E%3Cline x1='960' y1='520' x2='960' y2='240' stroke='rgba(255,255,255,.15)' stroke-width='1.4'/%3E%3Cline x1='820' y1='650' x2='1120' y2='650' stroke='rgba(255,255,255,.15)' stroke-width='1.4'/%3E%3Cpath d='M600 520 H820 V600 H740 V560 H600 Z' fill='none' stroke='rgba(255,255,255,.12)' stroke-width='1.2'/%3E%3Ccircle cx='740' cy='580' r='8' fill='none' stroke='rgba(255,255,255,.12)' stroke-width='1.2'/%3E%3Crect x='980' y='280' width='120' height='60' rx='6' fill='none' stroke='rgba(255,255,255,.12)' stroke-width='1.2'/%3E%3Ccircle cx='1130' cy='300' r='14' fill='none' stroke='rgba(255,255,255,.12)' stroke-width='1.2'/%3E%3Crect x='1080' y='360' width='80' height='60' rx='6' fill='none' stroke='rgba(255,255,255,.12)' stroke-width='1.2'/%3E%3Cpath d='M560 460 A60 60 0 0 1 620 520' fill='none' stroke='rgba(255,255,255,.16)' stroke-width='1.6'/%3E%3Cpath d='M900 370 A70 70 0 0 0 970 440' fill='none' stroke='rgba(255,255,255,.16)' stroke-width='1.6'/%3E%3Cpath d='M820 650 A60 60 0 0 1 880 710' fill='none' stroke='rgba(255,255,255,.16)' stroke-width='1.6'/%3E%3Ccircle cx='640' cy='560' r='6' fill='rgba(255,255,255,.18)'/%3E%3Ccircle cx='1120' cy='600' r='6' fill='rgba(255,255,255,.18)'/%3E%3Cline x1='120' y1='90' x2='1280' y2='90' marker-start='url(%23dimArrow)' marker-end='url(%23dimArrow)' stroke='rgba(255,255,255,.14)' stroke-width='1.1'/%3E%3Cline x1='100' y1='110' x2='100' y2='760' marker-start='url(%23dimArrow)' marker-end='url(%23dimArrow)' stroke='rgba(255,255,255,.14)' stroke-width='1.1'/%3E%3Cline x1='720' y1='110' x2='720' y2='760' stroke='rgba(255,255,255,.14)' stroke-width='1' stroke-dasharray='8 8'/%3E%3Cline x1='260' y1='620' x2='760' y2='620' stroke='rgba(255,255,255,.14)' stroke-width='1' stroke-dasharray='8 8'/%3E%3C/g%3E%3C/svg%3E");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        opacity: 0.3;
+        pointer-events: none;
+        z-index: 0;
+        animation: worksBlueprintContinue 10s ease-in-out infinite alternate;
+    }
+    
+    @keyframes worksBlueprintContinue {
+        0% { 
+            opacity: 0.25; 
+            transform: scale(1) translateY(0);
+        }
+        100% { 
+            opacity: 0.35; 
+            transform: scale(1.01) translateY(-5px);
+        }
+    }
+    
+    /* S'assurer que le contenu reste au-dessus */
+    .works-container {
+        position: relative;
+        z-index: 1;
+    }
+}
+
+/* Version simplifiée pour très petits mobiles */
+@media (max-width: 480px) {
+    .home-blueprint {
+        height: 150vh !important; /* Un peu moins haut sur petit mobile */
+        opacity: 0.3;
+    }
+    
+    .works::before {
+        opacity: 0.2;
+        animation: none; /* Pas d'animation sur très petit écran pour les performances */
+    }
+}
+
+/* Mobile: version simplifiée du blueprint pour les performances */
+@media (max-width: 768px) {
+    .works::before {
+        background-image: none;
+        background: 
+            linear-gradient(90deg, rgba(0,255,136,0.02) 1px, transparent 1px),
+            linear-gradient(rgba(0,255,136,0.02) 1px, transparent 1px);
+        background-size: 40px 40px, 40px 40px;
+        opacity: 0.3;
+        animation: none;
+        transform: none;
+    }
+    
+    /* Animation légère sur mobile */
+    .works::before {
+        animation: mobileGridPulse 6s ease-in-out infinite alternate;
+    }
+}
+
+@keyframes mobileGridPulse {
+    0% { opacity: 0.2; }
+    100% { opacity: 0.4; }
+}
+
+/* Version alternative plus subtile si vous préférez */
+.works.subtle::before {
+    background: 
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 59px,
+            rgba(0,255,136,0.03) 60px
+        ),
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 59px,
+            rgba(0,255,136,0.03) 60px
+        ),
+        radial-gradient(circle at 25% 25%, rgba(0,255,136,0.05) 1px, transparent 2px),
+        radial-gradient(circle at 75% 75%, rgba(0,255,136,0.03) 1px, transparent 2px);
+    background-size: 60px 60px, 60px 60px, 120px 120px, 180px 180px;
+    opacity: 0.6;
+    animation: subtleFlow 8s ease-in-out infinite alternate;
+}
+
+@keyframes subtleFlow {
+    0% { opacity: 0.4; transform: scale(1); }
+    100% { opacity: 0.7; transform: scale(1.005); }
+}
+
+/* ========================================
+   SOLUTION SIMPLE : ÉTENDRE LE BLUEPRINT
+   ======================================== */
+
+/* Extension du blueprint du hero pour couvrir Works - MOBILE/TABLET SEULEMENT */
+@media (max-width: 1024px) {
+    /* Étendre le blueprint existant du hero */
+    .home-blueprint {
+        position: fixed !important;
+        top: 0;
+        left: 0;
+        width: 100vw !important;
+        height: 200vh !important; /* Double la hauteur */
+        z-index: -2 !important; /* Derrière tout */
+        opacity: 0.4 !important;
+        transform: scale(1.1) !important; /* Légèrement plus grand */
+    }
+    
+    /* OU Alternative : Dupliquer sur la section Works */
+    .works {
+        position: relative;
+        z-index: 1;
+    }
+    
+    .works::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: inherit; /* Hérite du background de .works */
+        z-index: -1;
+    }
+    
+    /* Ajouter le même blueprint que le hero sur works */
+    .works::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0.35;
+        pointer-events: none;
+        z-index: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 1440 900' preserveAspectRatio='xMidYMid slice' xmlns='http://www.w3.org/2000/svg'%3E%3Cg filter='url(%23bpGlowPro)'%3E%3Cpath d='M120 110 H1280 V760 H260 L240 730 H120 Z' fill='none' stroke='rgba(255,255,255,.18)' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M260 730 Q360 620 520 620 H760' fill='none' stroke='rgba(255,255,255,.18)' stroke-width='1.6'/%3E%3Cpath d='M260 620 V260 H560 V460 H420 V620 Z' fill='none' stroke='rgba(255,255,255,.18)' stroke-width='1.6'/%3E%3Crect x='600' y='240' width='300' height='260' rx='2' fill='none' stroke='rgba(255,255,255,.18)' stroke-width='1.6'/%3E%3Cpath d='M930 240 H1240 V520 H930 Z' fill='none' stroke='rgba(255,255,255,.18)' stroke-width='1.6'/%3E%3Crect x='820' y='560' width='300' height='180' rx='2' fill='none' stroke='rgba(255,255,255,.18)' stroke-width='1.6'/%3E%3C/g%3E%3C/svg%3E");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        animation: blueprintExtended 8s ease-in-out infinite alternate;
+    }
+    
+    @keyframes blueprintExtended {
+        0% { 
+            opacity: 0.3; 
+            transform: translateY(0) scale(1);
+        }
+        100% { 
+            opacity: 0.4; 
+            transform: translateY(-10px) scale(1.02);
+        }
+    }
+}
+
+/* Version encore plus simple si les autres ne marchent pas */
+@media (max-width: 1024px) {
+    /* Forcer l'extension du blueprint avec position absolue */
+    body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 200vh;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 1440 900' preserveAspectRatio='xMidYMid slice' xmlns='http://www.w3.org/2000/svg'%3E%3Cg%3E%3Cpath d='M120 110 H1280 V760 H260 L240 730 H120 Z' fill='none' stroke='rgba(255,255,255,.15)' stroke-width='1.6'/%3E%3Cpath d='M260 730 Q360 620 520 620 H760' fill='none' stroke='rgba(255,255,255,.15)' stroke-width='1.6'/%3E%3Cpath d='M260 620 V260 H560 V460 H420 V620 Z' fill='none' stroke='rgba(255,255,255,.15)' stroke-width='1.6'/%3E%3Crect x='600' y='240' width='300' height='260' rx='2' fill='none' stroke='rgba(255,255,255,.15)' stroke-width='1.6'/%3E%3Cpath d='M930 240 H1240 V520 H930 Z' fill='none' stroke='rgba(255,255,255,.15)' stroke-width='1.6'/%3E%3Crect x='820' y='560' width='300' height='180' rx='2' fill='none' stroke='rgba(255,255,255,.15)' stroke-width='1.6'/%3E%3Cline x1='420' y1='460' x2='560' y2='460' stroke='rgba(255,255,255,.12)' stroke-width='1.4'/%3E%3Cline x1='600' y1='370' x2='900' y2='370' stroke='rgba(255,255,255,.12)' stroke-width='1.4'/%3E%3Cline x1='960' y1='520' x2='960' y2='240' stroke='rgba(255,255,255,.12)' stroke-width='1.4'/%3E%3Cline x1='820' y1='650' x2='1120' y2='650' stroke='rgba(255,255,255,.12)' stroke-width='1.4'/%3E%3Ccircle cx='640' cy='560' r='6' fill='rgba(255,255,255,.15)'/%3E%3Ccircle cx='1120' cy='600' r='6' fill='rgba(255,255,255,.15)'/%3E%3C/g%3E%3C/svg%3E");
+        background-size: 100% 50%;
+        background-repeat: repeat-y;
+        background-position: top center;
+        opacity: 0.25;
+        pointer-events: none;
+        z-index: -10;
+        animation: globalBlueprint 12s ease-in-out infinite alternate;
+    }
+    
+    @keyframes globalBlueprint {
+        0% { 
+            opacity: 0.2; 
+            transform: translateY(0);
+        }
+        100% { 
+            opacity: 0.3; 
+            transform: translateY(-20px);
+        }
+    }
+}
+
+/* Désactiver les animations blueprint existantes si elles interfèrent */
+@media (max-width: 1024px) {
+    .bp-loader,
+    .home-blueprint {
+        /* Réduire l'intensité pour éviter la superposition */
+        opacity: 0.15 !important;
+    }
+}
 
 /* === HOME PRO BLUEPRINT — styles === */
 .home-blueprint{ position:absolute; inset:0; z-index:-1; pointer-events:none; opacity:.66; animation: bp-pan 16s ease-in-out infinite alternate; }
